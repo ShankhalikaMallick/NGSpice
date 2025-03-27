@@ -1,0 +1,13 @@
+*voltage divider
+V1 A 0 DC 5V ; 		DC voltage source of 5V
+R1 A B 1k ; 		Resistor of 1kΩ between A and B
+R2 B 0 1k ;		 Resistor of 1kΩ between B and ground
+
+.tran 1ns 10us ;	Transient analysis from 0 to 10us
+.control
+run
+plot V(A); 		Plot input voltage at node A
+plot V(B);		Plot input voltage at node A
+plot I(V1);
+.endc
+.end

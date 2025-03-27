@@ -1,0 +1,11 @@
+* Simple Circuit: Voltage Source and Resistor
+V1 VDD 0 DC 5V     ; DC voltage source of 5V
+R1 VDD 0 1k        ; Resistor of 1kΩ between A and ground
+
+.tran 1ns 10us             ; Transient analysis from 0 to 10us
+.control
+run
+plot V(VDD)        ; Plot input voltage at node
+plot I(V1);
+.endc
+.end

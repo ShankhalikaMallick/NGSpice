@@ -1,0 +1,18 @@
+INV VTC
+VIN G 0 DC 5V
+VDD V 0 DC 5V
+
+.MODEL P1 PMOS Level=49 L=1.8e-7 W=0.5e-4 version =3.3.0 Lint = 3.e-08 Tox = 4.2e-09	 Vth0 =-0.42	 Rdsw = 450 	Xj= 7.0000000E-08         Nch= 5.9200000E+17  
+
+.MODEL N1 NMOS Level=49 L=1.8e-7 W=1.0e-4 version =3.3.0 Lint = 4.e-08 Tox = 4.e-09 	Vth0 =0.3999 	Rdsw = 250 	Xj= 6.0000000E-08 		Nch= 5.9500000E+17 
+
+M1 D G V VDD P1 
+M2 D G 0 0 N1
+.DC VIN 0 5V 0.02 
+.CONTROL
+RUN
+plot -I(VDD) I(VIN)
+plot V(D) V(G)
+plot -I(VDD)*V(D)
+.ENDC 
+.END
